@@ -21,12 +21,16 @@ function contentInside(string, op1, op2) {
         }
     }
 
-    if (state != 0) {
+    if (state != 0 && buf.length > 0) {
         console.error(buf + "\n^\nerror: unbalanced tokens (-Wstate--not-zero)")
         return "ERR"
     }
+
+    else if (buf.length == 0 && state != 0) { console.error(buf + "\n^\nerror: nothing to return (did you open the match?) (-Wbuffer--not-full)"); return "ERR" }
 
     return buf.trim();
 }
 
 module.exports.match = contentInside
+
+contentInside("")
