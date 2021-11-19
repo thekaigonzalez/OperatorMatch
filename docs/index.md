@@ -38,3 +38,23 @@ const match_paren = (string) => {
 match_paren("(see (me))")
 
 ```
+
+## Matching Errors
+
+```js
+
+const match_paren = (string) => {
+    return OPM.match(string, '(', ')')
+}
+
+match_paren("(see (me)")
+
+```
+
+Errors:
+
+```js
+(see (me)
+^
+error: unbalanced tokens (-Wstate--not-zero)
+```
